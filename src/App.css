@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-section {
+  width: 100%;
+  height: 15vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#131212), to(#53545e));
+  background: linear-gradient(#131212, #53545e);
+  border-radius: 0 0 60px 60px;
+}
+
+.form-section__form__input {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  width: 324px;
+  height: 47px;
+  border: 1px solid #727272;
+  border-radius: 8px 0 0 8px;
+  -webkit-box-shadow: 0px 2px 5px 2px #838383;
+          box-shadow: 0px 2px 5px 2px #838383;
+}
+
+.form-section__form__button {
+  outline: none;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 1px;
+  height: 51px;
+  border: 1px solid #727272;
+  border-radius: 0 8px 8px 0;
+  -webkit-box-shadow: 0px 2px 5px 2px #838383;
+          box-shadow: 0px 2px 5px 2px #838383;
+}
+
+.form-section__suggestion {
+  text-align: center;
+  width: 324px;
+  position: absolute;
+  top: 100px;
+  height: 88px;
+  overflow: hidden;
+}
+
+.form-section__suggestion__text {
+  background: #e5e5e5;
+  border-radius: 0 0 2px 2px;
+}
+
+.starting-card-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1570px;
+  margin: auto;
+}
+
+.starting-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 25px auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 0px 4px 20px 5px #efefef;
+          box-shadow: 0px 4px 20px 5px #efefef;
+  border-radius: 8px;
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(17, 107, 17, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+.starting-cards__header {
   color: white;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 800;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*# sourceMappingURL=App.css.map */
