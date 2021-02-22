@@ -116,6 +116,13 @@ export default function Home() {
           <button type="submit">Search</button>
         </form>
         <div>
+          {pokemonList?.map((pokemon) => {
+            if (pokemon.name?.includes(searchedPoke) && pokemon.name[0] === searchedPoke[0]) {
+              return <div>{pokemon.name}</div>;
+            }
+          })}
+        </div>
+        <div>
           {getsearchedPoke ? (
             <SelectedCard
               name={getsearchedPoke?.name}
