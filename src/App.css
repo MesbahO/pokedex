@@ -24,11 +24,13 @@
   height: 47px;
   border: 1px solid #727272;
   border-radius: 8px 0 0 8px;
-  -webkit-box-shadow: 0px 2px 5px 2px #838383;
-          box-shadow: 0px 2px 5px 2px #838383;
+  -webkit-box-shadow: 0px 2px 5px 2px #1f1d1d;
+          box-shadow: 0px 2px 5px 2px #1f1d1d;
 }
 
 .form-section__form__button {
+  color: white;
+  background-color: rgba(19, 19, 28, 0.686);
   outline: none;
   font-weight: 600;
   font-size: 16px;
@@ -36,8 +38,8 @@
   height: 51px;
   border: 1px solid #727272;
   border-radius: 0 8px 8px 0;
-  -webkit-box-shadow: 0px 2px 5px 2px #838383;
-          box-shadow: 0px 2px 5px 2px #838383;
+  -webkit-box-shadow: 0px 2px 5px 2px #1f1d1d;
+          box-shadow: 0px 2px 5px 2px #1f1d1d;
 }
 
 .form-section__suggestion {
@@ -51,7 +53,7 @@
 
 .form-section__suggestion__text {
   background: #e5e5e5;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 3px 3px;
 }
 
 .starting-card-section {
@@ -67,6 +69,103 @@
           align-items: center;
   max-width: 1570px;
   margin: auto;
+}
+
+.selected-card-section {
+  margin-top: 25px;
+}
+
+.selected-card {
+  margin-top: 200px;
+  -webkit-box-shadow: 0px 4px 20px 5px #c2c0c0;
+          box-shadow: 0px 4px 20px 5px #c2c0c0;
+  border-radius: 12px;
+  padding: 40px;
+  width: 400px;
+  height: 850px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  position: relative;
+}
+
+.selected-card__image-wrapper__image {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 220px;
+  width: 220px;
+}
+
+.selected-card__wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.selected-card__wrapper__content {
+  font-family: sans-serif;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.selected-card__stat-wrapper {
+  width: 100%;
+}
+
+.selected-card__stat-wrapper__ability-list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 15px 0;
+}
+
+.selected-card__stat-wrapper__ability-list__abilities {
+  background-color: blue;
+  color: white;
+  width: 25%;
+  text-align: center;
+  border-radius: 8px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.selected-card__stat-wrapper__stat-list-wrapper__stat-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.selected-card__stat-wrapper__stat-list-wrapper__stat-list__stat {
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 10px 0;
+  border-radius: 5px;
 }
 
 .starting-cards {

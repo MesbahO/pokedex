@@ -2,45 +2,76 @@ import React from "react";
 
 export default function SelectedCard({name, height, weight, abilities, stats, getsearchedPoke}) {
   const dispability = (ability) => {
-    return ability ? <p key={ability.ability.name}>{ability.ability.name}</p> : <p></p>;
+    return ability ? (
+      <span
+        className="selected-card__stat-wrapper__ability-list__abilities"
+        key={ability.ability.name}
+      >
+        {ability.ability.name}
+      </span>
+    ) : (
+      <p></p>
+    );
   };
   const dispStats = (stat) => {
     return stat ? (
-      <>
-        <p key={stat.stat.name}>{stat.stat.name}</p>
-        <p key={stat["base_stat"]}>{stat["base_stat"]}</p>
-      </>
+      <div className="selected-card__stat-wrapper__stat-list-wrapper__stat-list">
+        <p
+          className="selected-card__stat-wrapper__stat-list-wrapper__stat-list__stat"
+          key={stat.stat.name}
+        >
+          {stat.stat.name}
+        </p>
+        <p
+          className="selected-card__stat-wrapper__stat-list__stat"
+          style={{
+            width: `${stat["base_stat"]}px`,
+            textAlign: "center",
+            backgroundColor: "green",
+            color: "white",
+            borderRadius: "5px",
+            lineHeight: "25px",
+          }}
+          key={stat["base_stat"]}
+        >
+          {stat["base_stat"]}
+        </p>
+      </div>
     ) : (
       <p></p>
     );
   };
   return (
-    <div>
-      <div>
-        {getsearchedPoke ? (
-          <img
-            src={getsearchedPoke.sprites.other["official-artwork"]["front_default"]}
-            alt="sprite"
-          />
-        ) : (
-          <p>Select Pokemon</p>
-        )}
+    <div className="selected-card">
+      <div className="selected-card__image-wrapper">
+        <img
+          className="selected-card__image-wrapper__image"
+          src={getsearchedPoke.sprites.other["official-artwork"]["front_default"]}
+          alt="sprite"
+        />
       </div>
-      <h3>
-        name
-        <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
-      </h3>
-      <h3>
-        height
-        <span>{height}</span>
-      </h3>
-      <h3>
-        weight
-        <span>{weight}</span>
-      </h3>
-      <br />
-      {abilities.map((ability) => dispability(ability))}
-      {stats.map((stat) => dispStats(stat))}
+      <div className="selected-card__wrapper">
+        <p className="selected-card__wrapper__content">Name</p>
+        <p className="selected-card__wrapper__content">
+          {name.charAt(0).toUpperCase() + name.slice(1)}
+        </p>
+      </div>
+      <div className="selected-card__wrapper">
+        <p className="selected-card__wrapper__content">Height</p>
+        <p className="selected-card__wrapper__content">{height}</p>
+      </div>
+      <div className="selected-card__wrapper">
+        <p className="selected-card__wrapper__content">Weight</p>
+        <p className="selected-card__wrapper__content">{weight}</p>
+      </div>
+      <div className="selected-card__stat-wrapper">
+        <div className="selected-card__stat-wrapper__ability-list">
+          {abilities.map((ability) => dispability(ability))}
+        </div>
+        <div className="selected-card__stat-wrapper__stat-list-wrapper">
+          {stats.map((stat) => dispStats(stat))}
+        </div>
+      </div>
     </div>
   );
 }

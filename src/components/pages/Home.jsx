@@ -142,7 +142,7 @@ export default function Home() {
           </button>
         </form>
       </section>
-      <section>
+      <section className="selected-card-section">
         {getsearchedPoke ? (
           <SelectedCard
             name={getsearchedPoke?.name}
@@ -157,12 +157,16 @@ export default function Home() {
         )}
       </section>
       <section>
-        <DropDown
-          getsearchedPoke={getsearchedPoke}
-          setSpriteGen={setSpriteGen}
-          setSpriteVer={setSpriteVer}
-          spriteGen={spriteGen}
-        />
+        {getsearchedPoke ? (
+          <DropDown
+            getsearchedPoke={getsearchedPoke}
+            setSpriteGen={setSpriteGen}
+            setSpriteVer={setSpriteVer}
+            spriteGen={spriteGen}
+          />
+        ) : (
+          <div></div>
+        )}
       </section>
       <section>
         <SpriteCollection

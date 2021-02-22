@@ -1,0 +1,66 @@
+.selected-card {
+  margin-top: 200px;
+  box-shadow: 0px 4px 20px 5px #c2c0c0;
+  border-radius: 12px;
+  padding: 40px;
+  width: 400px;
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  position: relative;
+  &__image-wrapper {
+    &__image {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      height: 220px;
+      width: 220px;
+    }
+  }
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &__content {
+      font-family: sans-serif;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+  }
+  &__stat-wrapper {
+    width: 100%;
+    &__ability-list {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin: 15px 0;
+      &__abilities {
+        background-color: blue;
+        color: white;
+        width: 25%;
+        text-align: center;
+        border-radius: 8px;
+        line-height: 30px;
+        font-weight: 600;
+      }
+    }
+    &__stat-list-wrapper {
+      &__stat-list {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        &__stat {
+          font-family: sans-serif;
+          font-weight: 700;
+          margin: 10px 0;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
