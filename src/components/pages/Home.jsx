@@ -7,6 +7,8 @@ export default function Home() {
   const [totalCount, setTotalCount] = useState();
   const [randomPokeList, setRandomPokeList] = useState();
   const [clickedCard, setClickedCard] = useState();
+  const [searchedPoke, setSearchedPoke] = useState();
+  const [getsearchedPoke, setGetSearchedPoke] = useState();
 
   //find the species limit and create a list of all the species names/ url in it
   useEffect(() => {
@@ -62,10 +64,51 @@ export default function Home() {
     }
   };
 
+  // validates and filters input data then makes a call to get all data for a specific pokemon
+
+  const searchPokeFunc = (setPoke) => {
+    let validate = pokemonList?.filter(
+      (pokemon) => pokemon.name === setPoke?.toLowerCase().split(" ").join("-")
+    );
+    if (setPoke && validate[0]) {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${setPoke.toLowerCase().split(" ").join("-")}`)
+        .then((res) => {
+          setGetSearchedPoke(res.data);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
+  };
+
   console.log(pokemonList);
   console.log(totalCount);
   console.log(randomPokeList);
   console.log(clickedCard);
+  console.log(getsearchedPoke);
 
-  return <div>{renderStartingCards()}</div>;
+  return (
+    <div>
+      <div>
+        <form
+          action="#"
+          onSubmit={(e) => {
+            e.preventDefault();
+            searchPokeFunc(searchedPoke);
+          }}
+        >
+          <input
+            placeholder="search for Pokemon"
+            onChange={(e) => {
+              setSearchedPoke(e.target.value);
+            }}
+          />
+          <button type="submit">Search</button>
+        </form>
+        <div></div>
+      </div>
+      <div> {renderStartingCards()}</div>
+    </div>
+  );
 }
