@@ -1,0 +1,22 @@
+.starting-cards {
+  display: flex;
+  margin: 25px auto;
+  flex-direction: column;
+  width: 200px;
+  justify-content: center;
+
+  box-shadow: 0px 4px 20px 5px #efefef;
+  border-radius: 8px;
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(17, 107, 17, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  &__header {
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+
+    font-weight: 800;
+  }
+  &__image {
+  }
+}

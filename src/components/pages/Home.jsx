@@ -73,6 +73,7 @@ export default function Home() {
     if (randomPokeList) {
       return randomPokeList.map((eachCard) => (
         <div
+          className="starting-card-section__cards"
           onClick={() => setClickedCard(pokemonList[eachCard].name)}
           key={pokemonList[eachCard].name}
         >
@@ -109,8 +110,9 @@ export default function Home() {
 
   return (
     <div>
-      <div>
+      <section className="form-section">
         <form
+          className="form-section__form"
           action="#"
           onSubmit={(e) => {
             e.preventDefault();
@@ -118,51 +120,59 @@ export default function Home() {
           }}
         >
           <input
+            className="form-section__form__input"
             placeholder="search for Pokemon"
             onChange={(e) => {
               setSearchedPoke(e.target.value);
             }}
-          />
-          <button type="submit">Search</button>
+          />{" "}
+          <div className="form-section__suggestion">
+            {pokemonList?.map((pokemon) => {
+              if (pokemon.name?.includes(searchedPoke) && pokemon.name[0] === searchedPoke[0]) {
+                return (
+                  <div className="form-section__suggestion__text" key={pokemon.name}>
+                    {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <button type="submit" className="form-section__form__button">
+            Search
+          </button>
         </form>
-        <div>
-          {pokemonList?.map((pokemon) => {
-            if (pokemon.name?.includes(searchedPoke) && pokemon.name[0] === searchedPoke[0]) {
-              return <div key={pokemon.name}>{pokemon.name}</div>;
-            }
-          })}
-        </div>
-        <div>
-          {getsearchedPoke ? (
-            <SelectedCard
-              name={getsearchedPoke?.name}
-              height={getsearchedPoke?.height * 10 + " cm"}
-              weight={getsearchedPoke?.weight / 10 + " Kg"}
-              abilities={getsearchedPoke?.abilities}
-              stats={getsearchedPoke?.stats}
-            />
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div>
-          <DropDown
+      </section>
+      <section>
+        {getsearchedPoke ? (
+          <SelectedCard
+            name={getsearchedPoke?.name}
+            height={getsearchedPoke?.height * 10 + " cm"}
+            weight={getsearchedPoke?.weight / 10 + " Kg"}
+            abilities={getsearchedPoke?.abilities}
+            stats={getsearchedPoke?.stats}
             getsearchedPoke={getsearchedPoke}
-            setSpriteGen={setSpriteGen}
-            setSpriteVer={setSpriteVer}
-            spriteGen={spriteGen}
           />
-        </div>
-        <div>
-          <SpriteCollection
-            spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
-            getsearchedPoke={getsearchedPoke}
-            spriteGen={spriteGen}
-            spriteVer={spriteVer}
-          />
-        </div>
-      </div>
-      <div> {renderStartingCards()}</div>
+        ) : (
+          <div></div>
+        )}
+      </section>
+      <section>
+        <DropDown
+          getsearchedPoke={getsearchedPoke}
+          setSpriteGen={setSpriteGen}
+          setSpriteVer={setSpriteVer}
+          spriteGen={spriteGen}
+        />
+      </section>
+      <section>
+        <SpriteCollection
+          spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
+          getsearchedPoke={getsearchedPoke}
+          spriteGen={spriteGen}
+          spriteVer={spriteVer}
+        />
+      </section>
+      <section className="starting-card-section"> {renderStartingCards()}</section>
     </div>
   );
 }
