@@ -14,6 +14,26 @@ export default function SelectedCard({
   spriteGen,
   spriteVer,
 }) {
+  const types = {
+    normal: "#A8A77A",
+    fire: "#EE8130",
+    water: "#6390F0",
+    electric: "#F7D02C",
+    grass: "#7AC74C",
+    ice: "#96D9D6",
+    fighting: "#C22E28",
+    poison: "#A33EA1",
+    ground: "#E2BF65",
+    flying: "#A98FF3",
+    psychic: "#F95587",
+    bug: "#A6B91A",
+    rock: "#B6A136",
+    ghost: "#735797",
+    dragon: "#6F35FC",
+    dark: "#705746",
+    steel: "#B7B7CE",
+    fairy: "#D685AD",
+  };
   const dispability = (ability) => {
     return ability ? (
       <span
@@ -56,6 +76,18 @@ export default function SelectedCard({
   };
   return (
     <div className="selected-card">
+      <div className="selected-card__type-wrapper">
+        {getsearchedPoke.types.map((type) => {
+          return (
+            <p
+              className="selected-card__type-wrapper__type"
+              style={{backgroundColor: types[type.type.name]}}
+            >
+              {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
+            </p>
+          );
+        })}
+      </div>
       <div className="selected-card__image-wrapper">
         <img
           className="selected-card__image-wrapper__image"
