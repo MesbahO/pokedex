@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StartingCards from "../subcomponents/StartingCards";
+import SelectedCard from "../subcomponents/SelectedCard";
 
 export default function Home() {
   const [pokemonList, setPokemonList] = useState();
@@ -46,6 +47,12 @@ export default function Home() {
     }
   }, [pokemonList]);
 
+  // Automatically renders seleted card on click of a starting card
+
+  useEffect(() => {
+    searchPokeFunc(clickedCard);
+  }, [clickedCard]);
+
   //redner radom pokemon list with child eliment and set an image for each pokemon
   const renderStartingCards = () => {
     if (randomPokeList) {
@@ -87,6 +94,8 @@ export default function Home() {
   console.log(randomPokeList);
   console.log(clickedCard);
   console.log(getsearchedPoke);
+  console.log(getsearchedPoke?.abilities);
+  console.log(getsearchedPoke?.stats);
 
   return (
     <div>
@@ -106,7 +115,19 @@ export default function Home() {
           />
           <button type="submit">Search</button>
         </form>
-        <div></div>
+        <div>
+          {getsearchedPoke ? (
+            <SelectedCard
+              name={getsearchedPoke?.name}
+              height={getsearchedPoke?.height * 10 + " cm"}
+              weight={getsearchedPoke?.weight / 10 + " Kg"}
+              abilities={getsearchedPoke?.abilities}
+              stats={getsearchedPoke?.stats}
+            />
+          ) : (
+            <div></div>
+          )}
+        </div>
       </div>
       <div> {renderStartingCards()}</div>
     </div>
