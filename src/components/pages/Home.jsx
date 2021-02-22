@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StartingCards from "../subcomponents/StartingCards";
 import SelectedCard from "../subcomponents/SelectedCard";
+import DropDown from "../subcomponents/DropDown";
+import SpriteCollection from "../subcomponents/SpriteCollection";
 
 export default function Home() {
   const [pokemonList, setPokemonList] = useState();
@@ -10,6 +12,8 @@ export default function Home() {
   const [clickedCard, setClickedCard] = useState();
   const [searchedPoke, setSearchedPoke] = useState();
   const [getsearchedPoke, setGetSearchedPoke] = useState();
+  const [spriteGen, setSpriteGen] = useState("generation-i");
+  const [spriteVer, setSpriteVer] = useState("red-blue");
 
   //find the species limit and create a list of all the species names/ url in it
   useEffect(() => {
@@ -53,11 +57,25 @@ export default function Home() {
     searchPokeFunc(clickedCard);
   }, [clickedCard]);
 
-  //redner radom pokemon list with child eliment and set an image for each pokemon
+  // Resets sprite version state when generation state has been changed.
+  useEffect(() => {
+    let keys = [];
+    if (getsearchedPoke?.sprites.versions[spriteGen]) {
+      for (const [key] of Object.entries(getsearchedPoke?.sprites.versions[spriteGen])) {
+        keys.push(key);
+        setSpriteVer(keys[0]);
+      }
+    }
+  }, [spriteGen]);
+
+  // Redner radom pokemon list with child eliment and set an image for each pokemon
   const renderStartingCards = () => {
     if (randomPokeList) {
       return randomPokeList.map((eachCard) => (
-        <div onClick={() => setClickedCard(pokemonList[eachCard].name)}>
+        <div
+          onClick={() => setClickedCard(pokemonList[eachCard].name)}
+          key={pokemonList[eachCard].name}
+        >
           <StartingCards
             image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
               pokemonList[eachCard].url.split("/")[6]
@@ -89,14 +107,6 @@ export default function Home() {
     }
   };
 
-  console.log(pokemonList);
-  console.log(totalCount);
-  console.log(randomPokeList);
-  console.log(clickedCard);
-  console.log(getsearchedPoke);
-  console.log(getsearchedPoke?.abilities);
-  console.log(getsearchedPoke?.stats);
-
   return (
     <div>
       <div>
@@ -118,7 +128,7 @@ export default function Home() {
         <div>
           {pokemonList?.map((pokemon) => {
             if (pokemon.name?.includes(searchedPoke) && pokemon.name[0] === searchedPoke[0]) {
-              return <div>{pokemon.name}</div>;
+              return <div key={pokemon.name}>{pokemon.name}</div>;
             }
           })}
         </div>
@@ -134,6 +144,22 @@ export default function Home() {
           ) : (
             <div></div>
           )}
+        </div>
+        <div>
+          <DropDown
+            getsearchedPoke={getsearchedPoke}
+            setSpriteGen={setSpriteGen}
+            setSpriteVer={setSpriteVer}
+            spriteGen={spriteGen}
+          />
+        </div>
+        <div>
+          <SpriteCollection
+            spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
+            getsearchedPoke={getsearchedPoke}
+            spriteGen={spriteGen}
+            spriteVer={spriteVer}
+          />
         </div>
       </div>
       <div> {renderStartingCards()}</div>
