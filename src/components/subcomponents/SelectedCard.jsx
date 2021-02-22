@@ -1,13 +1,26 @@
 import React from "react";
+import DropDown from "./DropDown";
+import SpriteCollection from "./SpriteCollection";
 
-export default function SelectedCard({name, height, weight, abilities, stats, getsearchedPoke}) {
+export default function SelectedCard({
+  name,
+  height,
+  weight,
+  abilities,
+  stats,
+  getsearchedPoke,
+  setSpriteGen,
+  setSpriteVer,
+  spriteGen,
+  spriteVer,
+}) {
   const dispability = (ability) => {
     return ability ? (
       <span
         className="selected-card__stat-wrapper__ability-list__abilities"
         key={ability.ability.name}
       >
-        {ability.ability.name}
+        {ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}
       </span>
     ) : (
       <p></p>
@@ -20,7 +33,7 @@ export default function SelectedCard({name, height, weight, abilities, stats, ge
           className="selected-card__stat-wrapper__stat-list-wrapper__stat-list__stat"
           key={stat.stat.name}
         >
-          {stat.stat.name}
+          {stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}
         </p>
         <p
           className="selected-card__stat-wrapper__stat-list__stat"
@@ -72,6 +85,26 @@ export default function SelectedCard({name, height, weight, abilities, stats, ge
           {stats.map((stat) => dispStats(stat))}
         </div>
       </div>
+      <section>
+        {getsearchedPoke ? (
+          <DropDown
+            getsearchedPoke={getsearchedPoke}
+            setSpriteGen={setSpriteGen}
+            setSpriteVer={setSpriteVer}
+            spriteGen={spriteGen}
+          />
+        ) : (
+          <div></div>
+        )}
+      </section>
+      <section>
+        <SpriteCollection
+          spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
+          getsearchedPoke={getsearchedPoke}
+          spriteGen={spriteGen}
+          spriteVer={spriteVer}
+        />
+      </section>
     </div>
   );
 }

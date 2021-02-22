@@ -151,12 +151,17 @@ export default function Home() {
             abilities={getsearchedPoke?.abilities}
             stats={getsearchedPoke?.stats}
             getsearchedPoke={getsearchedPoke}
+            setSpriteGen={setSpriteGen}
+            setSpriteVer={setSpriteVer}
+            spriteGen={spriteGen}
+            spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
+            spriteVer={spriteVer}
           />
         ) : (
           <div></div>
         )}
       </section>
-      <section>
+      {/* <section>
         {getsearchedPoke ? (
           <DropDown
             getsearchedPoke={getsearchedPoke}
@@ -167,15 +172,15 @@ export default function Home() {
         ) : (
           <div></div>
         )}
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <SpriteCollection
           spriteObj={getsearchedPoke?.sprites.versions[spriteGen][spriteVer]}
           getsearchedPoke={getsearchedPoke}
           spriteGen={spriteGen}
           spriteVer={spriteVer}
         />
-      </section>
+      </section> */}
       <section className="starting-card-section"> {renderStartingCards()}</section>
     </div>
   );
